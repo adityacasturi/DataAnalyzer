@@ -24,6 +24,9 @@ class PythonTool(BaseTool):
         arbitrary_types_allowed = True
 
     def _run(self, code: str) -> dict:
+        original_show = plt.show
+        plt.show = lambda: None
+
         try:
             repl = PythonAstREPLTool(locals={"df": self.df})
             result = repl.run(code)
@@ -45,3 +48,4 @@ class PythonTool(BaseTool):
             return ErrorOutput(message=f"Error executing code: {str(e)}").model_dump()
         finally:
             plt.close('all')
+            plt.show = original_show
