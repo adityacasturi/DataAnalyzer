@@ -40,17 +40,13 @@ export GOOGLE_API_KEY=your_gemini_api_key
 
 ### 3. Start the backend
 
-From the `backend` directory:
-
 ```bash
-uvicorn main:app --reload
+uvicorn backend.main:app --reload
 ```
 
 This starts the FastAPI server at `http://localhost:8000`.
 
 ### 4. Start the frontend
-
-In a separate terminal:
 
 ```bash
 cd frontend
